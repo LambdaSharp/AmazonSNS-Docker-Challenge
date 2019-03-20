@@ -37,7 +37,18 @@ After a couple cleanings, the dustbin gets full!  Human intervention is needed. 
 
 ## Level 3
 
+You're getting the hang of it! Although manually sending topic messages works in some cases it would be much nicer to schedule a cleaning job to start the vacuums. For level 3 go ahead and create a lambda function to kickoff a new cleaning job. Choose your own interval - although we recommend every 5 minutes. 
+
+
 ## Level 4
+
+All these messages are starting to get a bit overwhelming  - let's port all this data over to a CloudWatch dashboard to draw insights from the virtual vacuum data. 
+
+
+
+
+
+
 
 ## Boss
 
