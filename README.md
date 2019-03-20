@@ -57,7 +57,7 @@ You can use [LambdaSharpTool](https://github.com/LambdaSharp/LambdaSharpTool), [
 
 Hint 1: https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/sns-examples-publishing-messages.html
 
-Hint 2: https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
+Hint 2: Cloudwatch Events as a lambda function trigger would be useful here: https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html
 
 <details><summary>Not hard enough for you?</summary>
 Great! Make each vacuum clean **one at a time** but never the same vacuum twice in a row.
@@ -65,7 +65,7 @@ Great! Make each vacuum clean **one at a time** but never the same vacuum twice 
 
 ## Level 4
 
-All these messages are starting to get a bit overwhelming - let's add this data to a CloudWatch dashboard to draw insights from the virtual vacuum data. Each published sns metric is a sum statistic every 30 seconds with a total period of 30 minutes. See example below.
+All these messages are starting to get a bit overwhelming - let's add this data to a **CloudWatch** dashboard widget using the SNS topic data from the virtual vacuums. Each published sns metric is a sum statistic every 30 seconds with a total period of 30 minutes. See example below.
 
 ![Cloudwatch example](dashboard.png)
 
