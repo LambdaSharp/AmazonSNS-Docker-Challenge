@@ -1,6 +1,6 @@
 # AmazonSNS-Docker-Challenge
 
-In this challenge, we'll be exploring Amazon SNS for controlling applications using a message queues.
+In this challenge, we'll be exploring Amazon SNS for publishing and handling events.
 
 ## Helpful Links
 
@@ -59,7 +59,7 @@ Great! Make each vacuum clean one at a time but never the same one twice in a ro
 
 All these messages are starting to get a bit overwhelming - let's add this data to a CloudWatch dashboard to draw insights from the virtual vacuum data. Each metric is a sum statistic every 30 seconds with a total period of 30 minutes. See example below.
 
-![Cloudwatch example](CloudWatchDashboard.png)
+![Cloudwatch example](dashboard.png)
 
 ## Boss
 <img src="https://camo.githubusercontent.com/24ee58920381e83562f9780036a8df86ef9dec18/687474703a2f2f696d61676573322e66616e706f702e636f6d2f696d6167652f70686f746f732f31303430303030302f426f777365722d6e696e74656e646f2d76696c6c61696e732d31303430333230332d3530302d3431332e6a7067" alt="boss" data-canonical-src="http://images2.fanpop.com/image/photos/10400000/Bowser-nintendo-villains-10403203-500-413.jpg" style="max-width:100%;"></a></p>
