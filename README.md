@@ -27,11 +27,13 @@ vvr_2  | {"id":7766,"message":"88","eventType":"READY","timestamp":"2019-03-20T1
 vvr_3  | {"id":412,"message":"83","eventType":"READY","timestamp":"2019-03-20T17:58:43.6412794Z"}
 ```
 
-Publish SNS topic message to start cleaning.
-
 ## Level 1
 
+Publish a SNS topic message on `VirtualVacuumRobot` to start cleaning in the [AWS console](https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topics). `{'action':'start'}`.
+
 ## Level 2
+
+After a couple cleanings, the dustbin gets full!  Human intervention is needed.  Subscribe to the SNS topic: `VirtualVacuumRobot_DUSTBIN_FULL` for a SMS message.  Then you will want to reset the dustbin using the command: `{'action':'dustbin'}`
 
 ## Level 3
 
