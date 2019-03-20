@@ -65,9 +65,11 @@ Great! Make each vacuum clean **one at a time** but never the same vacuum twice 
 
 ## Level 4
 
-All these messages are starting to get a bit overwhelming - let's add this data to a **CloudWatch** dashboard widget using the SNS topic data from the virtual vacuums. Each published sns metric is a sum statistic every 30 seconds with a total period of 30 minutes. See example below.
+All these messages are starting to get a bit overwhelming - let's add this data to a **CloudWatch** dashboard widget using the SNS topic data from the virtual vacuums. Each published sns topic metric is a sum statistic every 30 seconds with a total period of 30 minutes. See example below.
 
 ![Cloudwatch example](dashboard.png)
+
+Hint: https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create_dashboard.html
 
 ## Boss
 
@@ -82,3 +84,4 @@ Great! The messages are in json format... can you make it more human readable?
 ## Clean up
 
 Publish a SNS message to clean up: `{'action': 'teardown'}`
+Delete any lambda functions you created.
