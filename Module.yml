@@ -1,0 +1,62 @@
+Module: LambdaSharp.Challenge.AmazonSNS-Docker-Challenge
+Items:
+
+  - Resource: Bucket
+    Description: S3 bucket for tracking available bots
+    Scope: all
+    Type: AWS::S3::Bucket
+    Allow: ReadWrite
+
+  - Resource: VirtualVacuumRobotNotifyTopic
+    Description: SNS notification topic when a bot is shutdown
+    Scope: all
+    Type: AWS::SNS::Topic
+    Allow:
+      - SNS:Publish
+
+  - Resource: VirtualVacuumRobotTopic
+    Description: SNS topic for sending commands to bots
+    Scope: all
+    Value: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot"
+    Allow:
+      - SNS:Publish
+
+  - Resource: VirtualVacuumRobotDUSTBINFULLTopic
+    Description: SNS topic for listening to DUSTBIN_FULL events
+    Scope: all
+    Type: AWS::SNS::Topic
+    Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_DUSTBIN_FULL
+    Allow:
+      - SNS:Subscribe
+
+  - Resource: VirtualVacuumRobotGeneralTopic
+    Description: SNS topic for listening to general events
+    Scope: all
+    Type: AWS::SNS::Topic
+    Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_General
+    Allow:
+      - SNS:Subscribe
+
+  - Resource: VirtualVacuumRobotSTUCKTopic
+    Description: SNS topic for listening to STUCK events
+    Scope: all
+    Type: AWS::SNS::Topic
+    Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_STUCK
+    Allow:
+      - SNS:Subscribe
+
+  - Function: KickOffFunction
+    Description: Function for activating bots are regular intervals
+    Memory: 256
+    Timeout: 30
+    Sources:
+      - Schedule: rate(1 minute)
+
+  - Function: EventFunction
+    Description: Function for reacting to bot events
+    Memory: 256
+    Timeout: 30
+    Sources:
+      - Topic: VirtualVacuumRobotDUSTBINFULLTopic
+      - Topic: VirtualVacuumRobotGeneralTopic
+      - Topic: VirtualVacuumRobotSTUCKTopic
