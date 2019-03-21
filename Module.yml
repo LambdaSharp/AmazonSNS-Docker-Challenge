@@ -11,39 +11,35 @@ Items:
     Description: SNS notification topic when a bot is shutdown
     Scope: all
     Type: AWS::SNS::Topic
-    Allow:
-      - SNS:Publish
+    Allow: Publish
 
   - Resource: VirtualVacuumRobotTopic
     Description: SNS topic for sending commands to bots
     Scope: all
+    Type: AWS::SNS::Topic
+    Allow: Publish
     Value: !Sub "arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot"
-    Allow:
-      - SNS:Publish
 
   - Resource: VirtualVacuumRobotDUSTBINFULLTopic
     Description: SNS topic for listening to DUSTBIN_FULL events
     Scope: all
     Type: AWS::SNS::Topic
+    Allow: Subscribe
     Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_DUSTBIN_FULL
-    Allow:
-      - SNS:Subscribe
 
   - Resource: VirtualVacuumRobotGeneralTopic
     Description: SNS topic for listening to general events
     Scope: all
     Type: AWS::SNS::Topic
+    Allow: Subscribe
     Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_General
-    Allow:
-      - SNS:Subscribe
 
   - Resource: VirtualVacuumRobotSTUCKTopic
     Description: SNS topic for listening to STUCK events
     Scope: all
     Type: AWS::SNS::Topic
+    Allow: Subscribe
     Value: !Sub arn:aws:sns:${AWS::Region}:${AWS::AccountId}:VirtualVacuumRobot_STUCK
-    Allow:
-      - SNS:Subscribe
 
   - Function: KickOffFunction
     Description: Function for activating bots are regular intervals
